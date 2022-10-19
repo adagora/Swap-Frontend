@@ -1,0 +1,24 @@
+# Config initially written for Prettier v1.19
+
+# Wrap text longer than this [default]
+printWidth: 80
+# Indentation length (in spaces) [default]
+tabWidth: 2
+# Use spaces for indentation instead of tabs [default]
+useTabs: false
+# Print semicolons at the ends of statements [default]
+semi: true
+# Use single quotes instead of double quotes [default: false]
+singleQuote: true
+# Only add quotes around object properties where required [default]
+quoteProps: 'as-needed'
+# Use single quotes instead of double quotes in JSX [default]
+jsxSingleQuote: false
+# No trailing commas [default]
+trailingComma: 'none'
+# Print spaces between brackets in object literals { foo: bar } [default]
+bracketSpacing: true
+# Put ending bracket on new line in JSX [default]
+jsxBracketSameLine: false
+# Omit parens when possible. Example: x => x
+arrowParens: 'avoid'

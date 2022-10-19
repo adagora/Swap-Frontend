@@ -1,0 +1,14 @@
+{
+    "connect_wallet" : "Connect Wallet",
+    "search_games" : "Search games...",
+    "volume": "volume",
+    "home_page": "Home",
+    "games": "Games",
+    "stake": "Stake",
+    "swap": "Swap",
+    "rules": "Rules",
+    "p2p_betting": "P2P Betting",
+    "coinflip": "Coinflip",
+    "blackjack": "Blackjack",
+    "random": "Random"
+}

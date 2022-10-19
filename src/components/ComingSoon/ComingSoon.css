@@ -1,0 +1,162 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-image: radial-gradient(ellipse at right top, #750a9a, #200964);
+  font-family: 'Poppins', sans-serif;
+}
+
+#content-background {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#content-wrapper {
+  width: 650px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100% - 10px);
+}
+
+#logo-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#logo-fill {
+  flex: 1 1 auto;
+}
+
+#logo-background {
+  flex: 250px;
+  max-height: 250px;
+  display: flex;
+}
+
+#logo-element {
+  display: flex;
+  flex: 150px;
+  align-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+#logo {
+  flex: 350px;
+  max-width: 350px;
+  margin: 0 auto;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#about-wrapper {
+  height: 300px;
+}
+
+#about-wrapper h1 {
+  font-size: 60px;
+  letter-spacing: 4px;
+  text-align: center;
+  color: whitesmoke;
+  margin-bottom: 20px;
+}
+
+#about-wrapper span {
+  color: white;
+  letter-spacing: 1px;
+  text-align: center;
+  display: block;
+}
+
+#team {
+  margin: 10px 0px;
+  display: block;
+}
+
+#icons-wrapper {
+  display: flex;
+  height: 40px;
+  align-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 140px;
+}
+
+#icons-wrapper .icon-fill {
+  flex: 1 1 auto;
+}
+
+#icons-wrapper .icon-wrapper {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#icons-wrapper .icon-wrapper .icon-white,
+#icons-wrapper .icon-wrapper .icon-color {
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  transition: all 0.4s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#icons-wrapper .icon-wrapper .icon-white,
+#icons-wrapper .icon-wrapper:hover .icon-color {
+  opacity: 1;
+}
+
+#icons-wrapper .icon-wrapper .icon-color,
+#icons-wrapper .icon-wrapper:hover .icon-white {
+  opacity: 0;
+}
+
+#twitter-icon-white {
+  background-image: url('../../assets/Elements/twitter_icon_white.svg');
+}
+
+#twitter-icon-blue {
+  background-image: url('../../assets/Elements/twitter_icon_blue.svg');
+}
+
+#discord-icon-white {
+  background-image: url('../../assets/Elements/discord_icon_white.svg');
+}
+
+#discord-icon-blue {
+  background-image: url('../../assets/Elements/discord_icon_blue.svg');
+}
+
+#linktree-icon-white {
+  background-image: url('../../assets/Elements/linktree_icon_white.svg');
+}
+
+#linktree-icon-green {
+  background-image: url('../../assets/Elements/linktree_icon_green.svg');
+}
+
+#content-filler {
+  flex: 1 1 auto;
+}
+
+@media all and (min-width: 992px) {
+  #content-wrapper {
+    transform: scale(1.5);
+  }
+}

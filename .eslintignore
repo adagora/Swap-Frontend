@@ -1,0 +1,15 @@
+node_modules/
+dist
+*.css
+*.scss
+*.svg
+*.mdx
+*.json
+webpack.*
+# Will be replaced by the external library in the future
+src/api
+scripts/
+.eslintrc.js
+
+#TODO: Remove this
+src/components
