@@ -1,7 +1,6 @@
 /* eslint-disable */
 import { useContext, useEffect, useState, Fragment } from 'react';
 import axios from 'axios';
-import WalletContext from './WalletContext';
 import wallet_pink from '../../assets/Elements/wallet_pink.png';
 import metamask from '../../assets/Elements/metamask.png';
 import safewIcon from '../../assets/Elements/safew_icon_32.png';
@@ -12,8 +11,9 @@ import { useTranslation } from 'react-i18next';
 import { Menu, Transition } from '@headlessui/react';
 import { ArchiveIcon } from '@heroicons/react/solid';
 import '../Header/WalletHover/WalletHover.css';
-import StateContext from '../Context';
-import { getMetamaskAddress } from '../../utils/blockchain';
+import { useAccount } from '../../store/accounts';
+import { truncateMiddle } from '../../utils/truncateMiddle';
+import { disconnect } from 'process';
 
 const backend = process.env.BACKEND_FQDN || 'localhost';
 
@@ -41,29 +41,16 @@ function AddWallet(props) {
   const balanceValue = () => {
     return 0;
   };
-  const handleConnectMetamask = async () => {
-    const address = await getMetamaskAddress();
-    sessionStorage.setItem('dao-user-address', address);
-  };
 
-  // const truncate = (str, len, sep) => {
-  // 	if (str.length < len) {
-  // 		return str;
-  // 	} else {
-  // 		return (
-  // 			str.substring(0, parseInt(len / 2)) +
-  // 			sep +
-  // 			str.substring(str.length - (parseInt(len / 2)), str.length)
-  // 		);
-  // 	}
-  // };
+  const { address, isConnected, hasMetamask, connect, disconnect } =
+    useAccount();
 
   const toggleSelector = () => {
-    if (!walletConnected) setShowSelector(!showSelector);
+    if (!isConnected) setShowSelector(!showSelector);
   };
 
   const handleWalletTrue = () => {
-    if (walletConnected) setWalletHover(prev => !prev);
+    if (isConnected) setWalletHover(prev => !prev);
     else {
       setShowSelector(prev => !prev);
     }
@@ -75,7 +62,7 @@ function AddWallet(props) {
 
   return (
     <>
-      {showSelector && (
+      {!isConnected && showSelector && (
         <Menu as="div" className="mainDiv">
           <Transition
             show={open}
@@ -102,7 +89,7 @@ function AddWallet(props) {
                         active ? 'item1' : 'item2',
                         'item3'
                       )}
-                      onClick={handleConnectMetamask}
+                      onClick={() => connect()}
                     >
                       <img
                         src={metamask}
@@ -120,12 +107,10 @@ function AddWallet(props) {
 
       <div id="header-wallet-wrapper" onClick={handleWalletTrue}>
         <div id="header-wallet">
-          {!walletConnected && (
-            <img src={wallet_pink} id="header-wallet-image" />
-          )}
+          {!isConnected && <img src={wallet_pink} id="header-wallet-image" />}
           <div id="wallet-connect">
             <span>
-              {walletConnected ? (
+              {isConnected ? (
                 <span
                   style={{
                     display: 'flex',
@@ -143,7 +128,7 @@ function AddWallet(props) {
                     }}
                   >
                     {owlBalance}
-                    <span>OWL</span>
+                    <span>ETH</span>
                   </p>
                   <span
                     style={{
@@ -154,20 +139,19 @@ function AddWallet(props) {
                     }}
                   >
                     <img src={metamask} style={{ height: '20px' }} />
-                    {/* <p>{getWalletAddress}</p> */}
+                    <p>{truncateMiddle(address, 3)}</p>
                   </span>
                 </span>
-              ) : (
+              ) : hasMetamask ? (
                 'Connect Wallet'
+              ) : (
+                'Install Metamask'
               )}
             </span>
           </div>
-          {walletHover && walletConnected && (
+          {walletHover && isConnected && (
             <WalletHover
-              disconnect={() => {
-                setWalletConnected(false);
-                sessionStorage.removeItem('dao-user-address');
-              }}
+              disconnect={disconnect}
               balance={owlBalance}
               usdbalance={usdBalance}
               balanceSecond={balance}

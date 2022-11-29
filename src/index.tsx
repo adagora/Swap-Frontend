@@ -9,8 +9,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 // import './polyfill';
-import { Web3ReactProvider } from '@web3-react/core';
-import { Web3Provider } from '@ethersproject/providers';
 import App from './App';
 
 // i18n
@@ -34,18 +32,12 @@ const loadingMarkup = (
     <h2> Loading.. </h2>
   </div>
 );
-const getLibrary = (provider: any): Web3Provider => {
-  const library = new Web3Provider(provider);
-  library.pollingInterval = 12000;
-  return library;
-};
+
 ReactDOM.render(
   <Suspense fallback={loadingMarkup}>
     <React.StrictMode>
       <BrowserRouter>
-        <Web3ReactProvider getLibrary={getLibrary}>
-          <App />
-        </Web3ReactProvider>
+        <App />
       </BrowserRouter>
     </React.StrictMode>
   </Suspense>,

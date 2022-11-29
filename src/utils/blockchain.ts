@@ -65,22 +65,6 @@ export const loadWeb3 = async () => {
   }
 };
 
-export const getMetamaskAddress = async () => {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    if (window.ethereum) {
-      const accounts = await window.ethereum.request({
-        method: 'eth_requestAccounts'
-      });
-
-      return accounts ? accounts[0] : null;
-    }
-  } catch (err) {
-    throw err;
-  }
-  return null;
-};
-
 //base on https://eips.ethereum.org/EIPS/eip-1474#error-codes
 //base on https://eips.ethereum.org/EIPS/eip-1193#provider-errors
 export const getMetamaskMessageError = (error: any) => {

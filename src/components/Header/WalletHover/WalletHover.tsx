@@ -63,6 +63,17 @@ export default function WalletHover({
                 </a>
               )}
             </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <div
+                  onClick={() => disconnect()}
+                  className={classNames(active ? 'item1' : 'item2', 'item3')}
+                >
+                  <ArchiveIcon className="icon" aria-hidden="true" />
+                  Disconnect
+                </div>
+              )}
+            </Menu.Item>
           </div>
         </Menu.Items>
       </Transition>
