@@ -21,7 +21,7 @@
   height: calc(100% - 60px);
   max-height: calc(100vh - 160px);
   width: calc(100% - 60px);
-  background-image: linear-gradient(to bottom, #340580, #d70a84);
+  background-image: linear-gradient(to bottom, #1e293b, #1e293b);
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0px 0px 15px -5px;
@@ -66,7 +66,7 @@
   .side-navigation-large-item-wrapper:hover
   .item-content {
   background-color: white;
-  color: #ab0d82;
+  color: #1e293b;
 }
 
 #sidebars
@@ -192,7 +192,7 @@
   left: 0;
   width: 100vw;
   height: 70px;
-  background-color: #ab0d8233;
+  background-color: #1e293b;
 }
 
 #sidebars #mobile-navigation #items-wrapper {
@@ -342,7 +342,7 @@
   #side-navigation-large
   #left-side-bar-show-button-wrapper
   #left-side-bar-show-button {
-  background-color: #d70a84aa;
+  background-color: #1e293b;
   margin: 0 auto;
   text-align: center;
   font-size: 40px;
@@ -364,7 +364,7 @@
 }
 
 #sidebars #left-side-bar-show-button-wrapper #left-side-bar-show-button:hover {
-  background-color: #d70a84;
+  background-color: #1e293b;
   box-shadow: 0px 0px 15px -5px white;
 }
 

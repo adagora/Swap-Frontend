@@ -16,7 +16,7 @@ export default function Footer() {
         maxWidth: '1335px',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderTop: '2px solid #d70a84',
+        borderTop: '2px solid #6875f5',
         color: 'rgb(162, 162, 168)',
         lineHeight: '1.4',
         fontSize: '14px'
@@ -117,7 +117,7 @@ export default function Footer() {
                   fontSize: '1.5rem',
                   width: '38px',
                   height: '38px',
-                  color: '#ab0d82'
+                  color: '#6875f5'
                 }}
                 className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-l5aar2"
                 focusable="false"
@@ -144,7 +144,7 @@ export default function Footer() {
                   fontSize: '1.5rem',
                   width: '38px',
                   height: '38px',
-                  color: '#ab0d82'
+                  color: '#6875f5'
                 }}
                 className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-l5aar2"
                 focusable="false"
@@ -171,7 +171,7 @@ export default function Footer() {
                   fontSize: '1.5rem',
                   width: '38px',
                   height: '38px',
-                  color: '#ab0d82'
+                  color: '#6875f5'
                 }}
                 className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-l5aar2"
                 focusable="false"
@@ -198,7 +198,7 @@ export default function Footer() {
                   fontSize: '1.5rem',
                   width: '38px',
                   height: '38px',
-                  color: '#ab0d82'
+                  color: '#6875f5'
                 }}
                 className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-l5aar2"
                 focusable="false"

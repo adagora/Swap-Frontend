@@ -13,9 +13,7 @@ import { Menu, Transition } from '@headlessui/react';
 import { ArchiveIcon } from '@heroicons/react/solid';
 import '../Header/WalletHover/WalletHover.css';
 import StateContext from '../Context';
-import { useWalletHook } from '../../hooks/useWalletHook';
-import useConnectWallet from '../../web3/hooks/useConnectWallet';
-import WALLET_TYPES from '../../web3/walletTypes';
+import { getMetamaskAddress } from '../../utils/blockchain';
 
 const backend = process.env.BACKEND_FQDN || 'localhost';
 
@@ -30,14 +28,6 @@ const TOKENID_FAKE_SIGUSD =
   '96c402c0e658909aa03f534006124f0e43725c467dbc8dea39680d0861892de5';
 
 function AddWallet(props) {
-  const handleConnectWallet = useConnectWallet();
-  const handleWalletConnect = (): void => {
-    handleConnectWallet(WALLET_TYPES.METAMASK);
-  };
-
-  const { connectEthereumWallet, getWalletAddress, disconnectEthereumWallet } =
-    useWalletHook();
-
   const { t } = useTranslation();
   const [balance, setBalance] = useState(0);
   const [usdBalance, setUSDBalance] = useState(0);
@@ -51,22 +41,11 @@ function AddWallet(props) {
   const balanceValue = () => {
     return 0;
   };
-
-  const getMetamaskAddress = async () => {
-    // eslint-disable-next-line no-useless-catch
-    try {
-      if (window.ethereum) {
-        const accounts = await (window as any).ethereum.request({
-          method: 'eth_requestAccounts'
-        });
-
-        return accounts ? accounts[0] : null;
-      }
-    } catch (err) {
-      throw err;
-    }
-    return null;
+  const handleConnectMetamask = async () => {
+    const address = await getMetamaskAddress();
+    sessionStorage.setItem('dao-user-address', address);
   };
+
   // const truncate = (str, len, sep) => {
   // 	if (str.length < len) {
   // 		return str;
@@ -115,7 +94,6 @@ function AddWallet(props) {
               <div
                 style={{ padding: '0.25rem 0 0.25rem', marginBottom: '1px' }}
               >
-                <button onClick={handleWalletConnect}>WalletConnect</button>
                 <Menu.Item>
                   {({ active }) => (
                     <a
@@ -124,7 +102,7 @@ function AddWallet(props) {
                         active ? 'item1' : 'item2',
                         'item3'
                       )}
-                      onClick={getMetamaskAddress}
+                      onClick={handleConnectMetamask}
                     >
                       <img
                         src={metamask}
@@ -134,7 +112,6 @@ function AddWallet(props) {
                     </a>
                   )}
                 </Menu.Item>
-                <Menu.Button onClick={getMetamaskAddress}>More</Menu.Button>
               </div>
             </Menu.Items>
           </Transition>
@@ -187,7 +164,10 @@ function AddWallet(props) {
           </div>
           {walletHover && walletConnected && (
             <WalletHover
-              disconnect={disconnectEthereumWallet}
+              disconnect={() => {
+                setWalletConnected(false);
+                sessionStorage.removeItem('dao-user-address');
+              }}
               balance={owlBalance}
               usdbalance={usdBalance}
               balanceSecond={balance}

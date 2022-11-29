@@ -37,7 +37,7 @@
 #header-wrapper #header-items {
   height: calc(100% - 50px);
   flex: calc(75% - 50px);
-  background-image: linear-gradient(to right, #340580, #d70a84);
+  background-image: linear-gradient(to right, #6875f5, #1e293b);
   margin: 25px;
   border-radius: 25px;
   display: flex;
