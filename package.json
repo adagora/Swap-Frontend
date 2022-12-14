@@ -34,8 +34,8 @@
     "zustand": "^4.1.4"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "start": "export NODE_ENV=development && react-app-rewired start",
+    "build": "export NODE_ENV=development && react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**\"",
